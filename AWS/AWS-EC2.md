@@ -77,6 +77,49 @@ Usecase:
 
 ![AWS-EC2-Right-For-Me](img/AWS-EC2-Right-For-Me.png)
 
+## EC2 Instances Types - Main ones
+
+- R: applications that needs a lot of RAM -in-memory caches
+- C: applications that needs good CPU - compute / databases
+- M: applications that are balanced (think "medium") - general / web app
+- i: applications that need good local I/O (instance storage) - databases
+- G: applications that need a GPU - video rendering / machine learning
+
+Burstable instances (T2/T3)
+
+- T2/T3: burstable instances (up to a capacity)
+- T2/T3 - unlimited
+
+__Real-world tip:__ use <https://ec2instances.info> - it contains information about the instance types.
+
+### Burstable Instances (T2/T3)
+
+- AWS has the concept of burstable instances (T2/T3 machines)
+- Bust means that overall, the instance has OK CPU performance.
+- When the machine needs to process something unexpected (a spike in load for example), it can burst, and CPU can be VERY good during that burst.
+- If the machine bursts, it utilizes "burst credits"
+- If all the credits are gone, the CPU becomes Bad  :(
+- If the machine stops bursting, credits are accumulated over time
+
+Burstable instances can be amazing to handle unexpected trqaffix and getting the insurance that it will be handled correctly
+
+If your instance consistently runs low on credit, you need to move to a different kind of non-burstable instance
+
+Cloudwatch can show you the Credit usage and balance:
+
+![AWS-EC2-Burstable-Credit-Usage](img/AWS-EC2-Burstable-Credit-Usage.png)
+
+CPU credits:
+
+![AWS-EC2-CPU-Credits](img/AWS-EC2-CPU-Credits.png)
+
+### T2/T3 Unlimited
+
+- It is possible to have an "unlimited burst credit balance"
+- You pay extra money if you go over your credit balance, but you don't lose performance
+
+Overall be careful, costs could go high if you're not monitoring the health of your instances.
+
 ## Shutdown Behaviour
 
 - __Shutdown behaviour:__ How should the instance react when shutdown is done using the OS?
@@ -142,5 +185,3 @@ When you create a placement group, you specify one of the following strategied f
 - __Disk:__ Read/Write for Ops/Bytes (only for instance store)
 
 __Note:__ _Ram is not included in the AWS metrics_
-
-

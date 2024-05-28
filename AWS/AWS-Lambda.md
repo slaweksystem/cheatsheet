@@ -55,3 +55,7 @@ __Example:__ Thumbnail creation
 3. Lambda function pushes the image in S3. It can also push some metadata to DynamoDB.
 
 ![AWS-Lambda-Example-Thumbnail-Creation](img/AWS-Lambda-Example-Thumbnail-Creation.png)
+
+## Exam Tips
+
+- By default, AWS Lambda runs your functions in a secure VPC with access to AWS services and the internet. Lambda owns this VPC, which is not connected to your account's default VPC. When you [connect a Lambda function to a VPC](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html#vpc-internet) in your account to access private resources, the function cannot access the internet unless your VPC provides access. Internet access from a private subnet requires network address translation (NAT). To give your function access to the internet, route outbound traffic to a NAT gateway in a public subnet.

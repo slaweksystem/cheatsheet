@@ -1,8 +1,6 @@
-# Generic Stuff
+# Generic unsorted Stuff
 
 ## AWS
-
-
 
 ## AWS System Manager Parameter Store
 
@@ -133,7 +131,7 @@ Dumps all our resources. - under construction
 ## Scaling Processes in ASG
 
 - Launch: Add a new EC2 to the group, increasing the capacity
-- Terminate: Removes an EC2 instance from the group, decreasing its capacity. 
+- Terminate: Removes an EC2 instance from the group, decreasing its capacity.
 - HealthCheck: Checks the health of the instances
 - ReplaceUnhealthy: Terminate unhealthy instances and re-create them
 - AZRebalance: Balance the number of EC2 instances across AZ
@@ -153,3 +151,12 @@ Dumps all our resources. - under construction
 - Integrated with AWS Config
 - Free service
 
+## Leftover to investigate
+
+- AWS CloudTrail
+- AWS Backup
+- AWS CloudWatch
+- AWS SNS
+- Amazon Elastic Block Store
+
+You can use Amazon Data Lifecycle Manager (Amazon DLM) to automate the creation, retention, and deletion of Amazon Elastic Block Store (Amazon EBS) snapshots. You can [create a lifecycle policy](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html) that includes specific tags to back up EBS volumes on a specified schedule and for a specified retention period. For example, you can take a snapshot of an EBS volume every day and keep the snapshots for 30 days.
