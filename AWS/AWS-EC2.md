@@ -185,3 +185,39 @@ When you create a placement group, you specify one of the following strategied f
 - __Disk:__ Read/Write for Ops/Bytes (only for instance store)
 
 __Note:__ _Ram is not included in the AWS metrics_
+
+## EC2 Pricing
+
+- EC2 instances prices (per hour) varies based on these parameters:
+  - Region you're in
+  - Instance Type you're using
+  - On-Demand vs Reserved vs Dedicated Host
+  - Linux vs Windows vs Private OS (RHEL, SLES, Windows SQL)
+- You are billed by the second, with a minimum of 60 seconds
+- You also pay for other factors such as storage, data transfer, fixed IP public addresses, load balancing
+- __You do not pay for the instance if the instance is stopped__
+
+### EC2 Pricing Example
+
+- t2.small in US-EAST-1 (VIRGINIA), cost $0.023 per Hour
+- If used for:
+  - 6 seconds, it costs $0.023/60 = $0.000383 (minimum of 60 seconds)
+  - 60 seconds, it costs $0.023/60 = $0.000383 (minimum of 60 seconds)
+  - 30 minutes, it costs $0.023/2 = $0.0115
+  - 1 month, it costs $0.023 * 24 * 30 = $16.56 (assuming a month is 30 days)
+  - X seconds (X> 60), it costs $0.023 * X / 3600
+- The best way to know the pricing is to consult the pricing page: <https://aws.amazon.com/ec2/pricing/on-demand/>
+
+## EC2 Instances Overview
+
+- Instances have 5 distinct characteristics advertised on the website:
+  - The TAM (type, amount, generation)
+  - The CPU (type, make, frequency, generation, number of cores)
+  - The I/O (disk performance, EBS optimisations)
+  - The Network (network bandwidth, network latency)
+  - Graphical Processing Unit (GPU)
+- It may be daunting to choose the right instance type (there are over 50 of them) - <https://aws.amazon.com/ec2/instance-types/>
+- <https://ec2instances.info/> can help with summarizing the types of instances
+- R/C/P/G/H/X/I/F/Z/CR are specialised in RAM, CPU, I/O, Network, GPU
+- M instance types are balanced
+- T2/T3 instance types are "burstable"
